@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+if [[ -f "$LARK_STATE/altar/statue_chest_looted" ]]; then
+  echo "${FX[standout]}${FG[245]}** You open the chest **${FG[none]}${FX[none]}"
+  if [[ -f "$LARK_STATE/altar/statue_dead" ]]; then
+    echo "In the chest you find pile of ${FX[bold]}30 silver${FX[no-bold]}"
+  else
+    echo "In the chest you find ${FX[bold]}5 silver${FX[no-bold]}"
+  fi
+  touch "$LARK_STATE/altar/statue_chest_looted"
+else
+  echo "This chest has already been looted."
+fi

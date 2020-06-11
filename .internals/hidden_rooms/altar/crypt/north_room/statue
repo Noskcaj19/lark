@@ -1,0 +1,45 @@
+#!/usr/bin/env zsh
+
+source "$LARK_ZSH/prezto/modules/spectrum/init.zsh"
+source "$LARK_ZSH/dotdir/scripts/gameover.zsh"
+
+echo "There stands a statue in the center of the room."
+echo
+echo -n "Do you approach it? "
+read RESP
+
+if [[ -f "$LARK_STATE/altar/statue_dead" ]]; then
+  echo "You prod the pieces of statue with your foot."
+  echo "It is quite dead."
+else
+  if [[ "${RESP:l}" == "y" ]]; then
+    echo "The statue shimmers and comes to life!"
+    echo
+    echo "With a slow but powerful thrust of it's fist it catches you by surprise!"
+    echo "${FG[red]}${FX[standout]}Remove 5 HP"
+    echo "((HP-=5))${FG[none]}${FX[no-standout]}"
+    ((HP-=5))
+    if [[ $HP -le 0 ]]; then
+      echo "With a crushing blow the statue slays you."
+      echo
+      gameover
+      return
+    fi
+
+    echo "Do you have a weapon"
+    read RESP
+    if [[ ${RESP:l} == "y" ]]; then
+      if [[ "$I" =~ dagger ]]; then
+        echo "You sink your dagger in a chink in it's armor!"
+        echo "The statues glimmer fades and crumbles to pieces"
+        touch "$LARK_STATE/altar/statue_dead"
+      else
+        echo
+        echo "No you don't!"
+        rm chest &>/dev/null
+      fi
+    else
+      echo "Run!"
+    fi
+  fi
+fi

@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+if [[ -f "$PWD/dark_stone.key" && ! -d "$PWD/crypt" ]]; then
+  echo "${FX[standout]}${FG[245]}* The ground shakes as the door slides open *${FG[none]}${FX[none]}"
+  cp -r "$LARK_INTERNAL/hidden_rooms/altar/crypt/" crypt
+fi

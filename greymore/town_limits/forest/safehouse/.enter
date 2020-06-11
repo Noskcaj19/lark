@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+echo "${FX[standout]}${FG[245]}** You tumble out of the portal and land onto the floor of the safehouse **${FG[none]}${FX[none]}"

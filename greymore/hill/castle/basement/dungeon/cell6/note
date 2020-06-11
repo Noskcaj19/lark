@@ -1,0 +1,15 @@
+#!eval
+=|= ${FX[standout]}${FG[245]}** You pick up and read the note **${FG[none]}${FX[none]}
+
+=|= ${FX[bold]}# Welcome to the Dungeon${FX[none]}
+
+You have been imprisoned by the King of Greymore on charges of treason and conspiring with a Dark Wizard!
+You had better find a way out before the guards come back...
+
+
+Fortunately for you, the king doesn't know the Dark Wizard passed on some of his powers to you!
+
+You can try and leave the cell, but those iron bars look pretty tough...
+
+=|= ${FX[standout]}To move around, use ${FX[bold]}cd${FX[no-bold]} followed by where you want to go, either a room name, a portal name, or .. to move out of the current room.
+=|= To move out of your cell, type ${FX[bold]}cd ..${FX[none]}${FG[none]}

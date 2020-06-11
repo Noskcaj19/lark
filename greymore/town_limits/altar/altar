@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+
+source "$LARK_ZSH/prezto/modules/spectrum/init.zsh"
+
+echo "As you approach the altar, you feel a great darkness emanating from it."
+echo "There is one set of runes set apart from the others."
+echo -n "Do you want to touch them? "
+read RESP
+
+if [[ "${RESP:l}" == "y" ]]; then
+  echo "You reach out and touch the runes."
+  if [[ -d "$PWD/crypt_entrance" ]]; then
+    echo "Nothing happens."
+    return
+  fi
+  echo "Suddenly, you feel the ground start shaking beneath your feet!"
+  echo "An otherworldly object rises from the floor!"
+  sleep 1
+  trap 'killall term-image' INT
+  "$LARK_BIN/term-image" -mb -b "$LARK_INTERNAL/special_files/hypertriangle.gif" -h25 -t &
+  image_pid="$!"
+  sleep 6.5
+  kill $image_pid
+  trap - INT
+  echo "Then crashes into the ground and with a great crack, the floor of the altar falls away."
+  echo
+  echo "Peering into the altar, you see stairs..."
+  cp -r "$LARK_INTERNAL/hidden_rooms/altar/crypt_entrance/" crypt_entrance
+else
+  echo "You decide you shouldn't disturb the souls of the Ancients."
+  echo "Besides, you have heard stories... and you are quite fond of keeping your sanity."
+fi

@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+
+source "$LARK_ZSH/prezto/modules/spectrum/init.zsh"
+
+echo "You seem to think yelling into the cave might be helpful"
+echo -n "Do you yell? "
+read RESP
+
+if [[ "${RESP:l}" == "y" ]]; then
+  echo -n "What do you yell? "
+  read YELL
+
+  if [[ -n "$YELL" ]]; then
+    if [[ $YELL =~ \!$ ]]; then
+      echo "With a loud voice you yell \"$YELL\""
+      echo
+      echo "A flurry of bats fly from the cave screeching!"
+    else
+      echo "You call out \"$YELL\""
+      echo
+      echo "Nothing seems to happen"
+    fi
+  else
+    echo "You decide not to"
+  fi
+else
+  echo "It's an empty cave, you have better things to do"
+fi

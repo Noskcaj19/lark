@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+=|= ${FX[standout]}${FG[245]}** Upon the lectern sits a scroll, you read it **${FG[none]}${FX[none]}
+
+=|= ${FX[bold]}
+Behold, this room contains the wall of eternal numbers.
+Within the endless stream of numbers and glyphs, we have embedded a rising sequence of numbers, so that you may locate a clue of advanced mathmatics imbued within the stream of entropy.
+=|= ${FX[no-bold]}

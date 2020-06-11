@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+
+source "$LARK_ZSH/prezto/modules/spectrum/init.zsh"
+
+echo "${FX[standout]}${FG[245]}This is definitely where the rustling was coming from.${FG[none]}${FX[none]}"
+if  [[ "$I" =~ "dagger" ]]; then
+  echo "${FX[standout]}${FG[245]}** You draw your dagger **${FX[no-standout]}${FG[none]}"
+fi
+echo -n "Do you want to search the bush? "
+read RESP
+
+if [[ "${RESP:l}" == "y" ]]; then
+  # TODO: Pet?
+  trap 'killall curl' INT
+  curl parrot.live &
+  parrot_pid="$!"
+  sleep 4.6
+  kill $parrot_pid
+  trap - INT
+  echo "A strangely colorful bird jumps on you and starts dancing!"
+  echo
+  echo "You are unharmed, albeit with a few brightly colored feathers in your hair.."
+  echo ".. they might be useful later, add them to your inventory ${FX[bold]}I+=\"feathers\"${FX[no-bold]}"
+else
+  echo "It's nothing but the wind, you have more important things to be doing."
+fi

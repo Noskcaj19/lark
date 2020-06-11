@@ -1,0 +1,112 @@
+#
+# A simple theme that displays relevant, contextual information.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+# Screenshots:
+#   http://i.imgur.com/nrGV6pg.png
+#
+
+#
+# 16 Terminal Colors
+# -- ---------------
+#  0 black
+#  1 red
+#  2 green
+#  3 yellow
+#  4 blue
+#  5 magenta
+#  6 cyan
+#  7 white
+#  8 bright black
+#  9 bright red
+# 10 bright green
+# 11 bright yellow
+# 12 bright blue
+# 13 bright magenta
+# 14 bright cyan
+# 15 bright white
+#
+
+# Load dependencies.
+pmodload 'helper'
+
+
+function prompt_sorin_precmd {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+
+  # Format PWD.
+
+#  _prompt_sorin_pwd=$(prompt-pwd)
+  _prompt_sorin_pwd="${${${PWD:a}/}##${LARK_BASE}}"
+  if [[ -z $_prompt_sorin_pwd  ]]; then
+    _prompt_sorin_pwd="/"
+  fi
+  _prompt_sorin_pwd=$(echo "$_prompt_sorin_pwd" | sed -r 's/.(.*)/\1/' | sed 's|/| > |g')
+
+#  _prompt_inventory="%B%F{magenta}\$I:%b $I%f$prompt_newline"
+  _prompt_inventory=''
+#  _prompt_health="%B%F{red}\$HP:%b $HP%B%F{cyan} \$SILVER:%b $SILVER%f$prompt_newline"
+  local inventory
+  if [[ -z "$I" ]]; then
+    inventory=""
+  else
+    inventory="${${I:0:${#I}-1}//,/|}"
+  fi
+  _prompt_health="%B%F{red}\$HP:%b $HP%B%F{cyan} \$SILVER:%b $SILVER%f%B %F{magenta}\$I:%b $inventory%f$prompt_newline"
+}
+
+function prompt_sorin_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent sp subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+
+  # Add hook for calling git-info before each command.
+  add-zsh-hook precmd prompt_sorin_precmd
+
+  # Tell prezto we can manage this prompt
+  zstyle ':prezto:module:prompt' managed 'yes'
+
+  # Set editor-info parameters.
+  zstyle ':prezto:module:editor:info:completing' format '%B%F{7}...%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary' format ' %B%F{1}❯%F{3}❯%F{2}❯%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' %F{3}♺%f'
+  zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{2}❮%F{3}❮%F{1}❮%f%b'
+
+  # Set up non-zero return value display
+  local show_return="✘ "
+  # Default is to show the return value
+  if zstyle -T ':prezto:module:prompt' show-return-val; then
+    show_return+='%? '
+  fi
+
+  _prompt_sorin_pwd=''
+  _prompt_inventory=''
+  _prompt_health=''
+
+  # Define prompts.
+#  PROMPT='${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_sorin_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
+  prompt_newline=$'\n%{\r%}'
+  PROMPT='$prompt_newline$_prompt_inventory$_prompt_health%F{4}${_prompt_sorin_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
+  RPROMPT='$python_info[virtualenv]${editor_info[overwrite]}%(?:: %F{1}'
+  RPROMPT+=${show_return}
+  RPROMPT+='%f)${VIM:+" %B%F{6}V%f%b"}${_prompt_sorin_git}'
+  SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
+}
+
+function prompt_sorin_preview {
+  local +h PROMPT=''
+  local +h RPROMPT=''
+  local +h SPROMPT=''
+
+  editor-info 2> /dev/null
+  prompt_preview_theme 'sorin'
+}
+
+prompt_sorin_setup "$@"
+# vim: ft=zsh

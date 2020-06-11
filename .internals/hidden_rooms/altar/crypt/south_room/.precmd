@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+if [[ -f "$PWD/pi" && ! -f "$LARK_STATE"/altar/hall_challenge_complete ]]; then
+  echo "${FX[standout]}${FG[245]}** You notice the lectern now holds a substantial amount of silver and a strange device **${FG[none]}${FX[none]}"
+  echo "You add the silver to your silver variable with ${FX[bold]}SILVER+=60${FX[no-bold]}"
+  echo "You add the device to your inventory variable with ${FX[bold]}I+=\"ancient_device\"${FX[no-bold]}"
+  touch "$LARK_STATE"/altar/hall_challenge_complete
+fi

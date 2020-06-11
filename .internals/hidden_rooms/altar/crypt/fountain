@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+echo "You approach the strange fountain."
+echo -n "Do you reach out to the running water? "
+read RESP
+
+if [[ "${RESP:l}" == "y" ]]; then
+  echo "You reach out but your hand passes right through the water and stone as though it wasn't there"
+else
+  echo "You have a bad feeling about the fountain, touching it seems unwise."
+fi

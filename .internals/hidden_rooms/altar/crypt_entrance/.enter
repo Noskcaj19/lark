@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+echo "${FX[standout]}${FG[245]}** As you step down into the crypt, a feeling of dread fills you.  Mortals were not meant to be here. **${FG[none]}${FX[none]}"

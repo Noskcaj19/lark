@@ -1,0 +1,4 @@
+#!eval
+=|= ${FX[standout]}${FG[245]}** You enter a large hall, the farthest wall shimmers with light as floating numbers and runes pour down. **${FX[none]}${FG[none]}
+
+In the middle of the room stands a lectern.

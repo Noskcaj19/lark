@@ -1,0 +1,27 @@
+.TH PORTALS 1
+.SH NAME
+portals \- or how to get from here to there
+.SH SYNOPSIS
+.B ln
+\fB\-s\fR \fIDESTINATION\fR
+.IR PORTAL_NAME
+.SH DESCRIPTION
+You recall the
+.B Dark Wizard
+taught you the art of
+.I portal making\.
+.PP
+It involves the incantation of the spell `ln -s DEST PORTAL_NAME`, where
+.I DEST
+is where you want to go, and
+.I PORTAL_NAME
+is the name the portal should take in the current room\.
+.SH LOCATIONS
+.TP
+You remember a safehouse just outside the city limits where you could portal to safely.
+.I ln -s ../../../../../town_limits/forest/safehouse freedom
+
+.SH UNIX
+In the UNIX filesystem, a \fIsymlink\fR is a "shortcut" or link from one file (the symlink) to another (it's \fItarget\fR)
+.PP
+The \fIln\fR command also supports the creation of \fIhardlinks\fR, where instead of a simple link, it creates a new name for the original file.

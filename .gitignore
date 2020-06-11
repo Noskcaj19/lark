@@ -1,0 +1,10 @@
+.idea/
+.internals/zsh/dotdir/.zhistory
+*.cache
+.internals/zsh/dotdir/.revolver/*
+.viminfo
+
+.internals/state/*
+greymore/hill/castle/basement/dungeon/cell6/freedom
+greymore/town_limits/altar/crypt_entrance/dark_stone.key
+greymore/town_limits/altar/crypt_entrance

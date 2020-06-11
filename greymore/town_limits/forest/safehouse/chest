@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+source "$LARK_ZSH/prezto/modules/spectrum/init.zsh"
+
+if [[ ! -f "${LARK_STATE}/safe_house_chest_empty" ]]; then
+  echo "You open the chest!"
+  echo "Inside you find a simple dagger and 10 silver coins"
+  echo
+  echo "Add it to your inventory by appending to your inventory variable with ${FX[bold]}I+=\"dagger\"${FX[no-bold]}"
+  echo "Add the silver by adding to your SILVER variable ${FX[bold]}((SILVER+=10))${FX[no-bold]}, the parenthesis are important, they indicate you want to do arithmetic"
+  echo
+  echo "${FX[standout]}Now that you are armed, you should venture back to the town to explore and gather gear."
+  echo "To view a map of the town, use the ${FX[bold]}map${FX[no-bold]} spell.  The oracle contains knowledge about this spell"
+
+  touch "${LARK_STATE}/safe_house_chest_empty"
+else
+  echo "You already emptied this chest"
+fi

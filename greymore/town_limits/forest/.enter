@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+echo "${FX[standout]}${FG[245]}** As you duck out of the safehouse, you think you hear something rustling in a nearby bush **${FG[none]}${FX[none]}"

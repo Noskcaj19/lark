@@ -1,0 +1,30 @@
+#!/usr/bin/env zsh
+
+source "$LARK_ZSH/prezto/modules/spectrum/init.zsh"
+
+echo "> Hello there traveler, you look like you need a place to rest and cleanup."
+echo "> I have a room you could stay in for 5 silver."
+echo
+echo "You are pretty roughed up from the prison guards, you could use rest."
+echo "Do you accept the innkeepers offer?"
+read -r RESP
+
+if [[ "${RESP:l}" == "y" ]]; then
+  if [[ "$SILVER" -gt 5 ]]; then
+    echo "* You accept *"
+    echo "> Your room is right up the stairs"
+    echo "${FX[standout]}${FG[245]}Remove 5 silver from your variable: ${FX[bold]}((SILVER-=5))${FG[none]}${FX[none]}"
+    echo
+    echo "${FX[standout]}${FG[245]}** You sleep in your room, and ${FX[bold]}gain 10 HP${FX[no-bold]} **${FG[none]}${FX[none]}"
+    echo "Add 10 to your \$HP var"
+  else
+    echo "* You do not have 5 silver to pay the innkeeper *"
+    echo "> Sorry, I can't give away rooms.  But I suppose I can spare a glass for you."
+    echo
+    echo "${FX[standout]}* You feel refreshed from the drink *${FX[no-standout]}"
+    echo "Add 3 to your \$HP var: ${FX[bold]}((HP+=5))${FX[no-bold]}"
+  fi
+else
+  echo "${FX[standout]}* You decline *${FX[no-standout]}"
+  echo "> Very well, safe travels."
+fi

@@ -1,0 +1,19 @@
+# Configure prezto
+#
+# prezto is a set of configs for zsh so I can do less work
+
+zstyle ':prezto:*:*' color 'yes'
+
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'editor' \
+  'history' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'syntax-highlighting' \
+  'prompt'
+
+zstyle ':prezto:module:editor' key-bindings 'emacs'
+
+zstyle ':prezto:module:prompt' theme 'lark'

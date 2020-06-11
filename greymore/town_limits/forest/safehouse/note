@@ -1,0 +1,16 @@
+#!eval
+=|= ${FX[standout]}${FG[245]}** The safehouse is a small hut that has some gear for emergencies **${FG[none]}${FX[none]}
+
+You escaped prison, congratulations!
+
+=|= But there's no time to rest, you need to confront ${FX[bold]}the King${FX[none]}.
+
+=|= ${FX[standout]}You look around to get your bearings: ${FX[bold]}ls -F${FX[no-bold]}
+=|= With this augmented spell, places (directories) are marked with a ${FX[bold]}/${FX[no-bold]}
+=|= Actions are marked with a ${FX[bold]}*${FX[none]}
+=|= Portals are marked with a ${FX[bold]}@${FX[none]}
+
+=|= ${FX[standout]}Fetch your weapon from the chest by interacting with it: ${FX[bold]}./chest${FX[none]}${FG[none]}
+
+=|= To leave the safehouse, use ${FX[bold]}cd ..${FX[no-bold]}
+=|= The ${FX[bold]}..${FX[no-bold]} refers to the parent directory.

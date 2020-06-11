@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+echo "${FX[standout]}${FG[245]}** As you enter, you glance around the inn, no one seems to recognize you **${FG[none]}${FX[none]}"
